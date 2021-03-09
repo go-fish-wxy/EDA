@@ -160,7 +160,7 @@ public class ACCT_IndividualAccounts_TDTM extends TDTM_Runnable {
     private static List<Contact> queryContacts(List<Contact> newContacts) {
         List<Contact> returnedContacts = new List<Contact>();
 
-        String dynamicSoql = 'SELECT Id, AccountId, Account.RecordTypeID, ' +
+        String dynamicSoql = 'SELECT Id, AccountId, Account.RecordTypeID, LeadId__c, ' +
                            'Account.Primary_Contact__c, Account.Name, FirstName, ' +
                            'LastName, OwnerId, Salutation, ' +
                            'MailingStreet, MailingCity, Mailing_County__c, MailingState, ' +
@@ -304,6 +304,10 @@ public class ACCT_IndividualAccounts_TDTM extends TDTM_Runnable {
                     accIdConIdToUpdate.put(con.AccountId, con.Id);
                }
             }
+
+            System.debug('Contact Available Fields --> ' + con);
+
+            System.debug('Lead Id --> ' + con.LeadId__c);
 
                 //(2) If Contacts are connected to Accounts, make the association in the other direction
                 // Add additional check for Lead Context
