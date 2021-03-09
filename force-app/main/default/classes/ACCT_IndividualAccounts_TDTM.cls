@@ -299,16 +299,18 @@ public class ACCT_IndividualAccounts_TDTM extends TDTM_Runnable {
         */
         private void handleInsertData(Contact con) {
             if (con.AccountId != null) {
-                //(1) If the Contact is connected to an Account but Primary_Contact__c on Account is NULL
-                if (con.Account.Primary_Contact__c == null) {
+               // (1) If the Contact is connected to an Account but Primary_Contact__c on Account is NULL
+               if (con.Account.Primary_Contact__c == null) {
                     accIdConIdToUpdate.put(con.AccountId, con.Id);
-                }
+               }
+            }
 
                 //(2) If Contacts are connected to Accounts, make the association in the other direction
-                if (checkHouseholdNaming(con.Account.RecordTypeID)) {
+                // Add additional check for Lead Context
+            //    if (checkHouseholdNaming(con.Account.RecordTypeID)) {
                     accountIdToRename.add(con.AccountId);
-                }
-            }
+            //    }
+            //}
         }
     }
 
