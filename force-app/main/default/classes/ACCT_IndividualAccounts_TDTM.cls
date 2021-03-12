@@ -87,8 +87,14 @@ public class ACCT_IndividualAccounts_TDTM extends TDTM_Runnable {
     */
     public override DmlWrapper run(List<SObject> newlist, List<SObject> oldlist,
                                    TDTM_Runnable.Action triggerAction, Schema.DescribeSObjectResult objResult) {
+
         List<Contact> newContacts = (List<Contact>)newlist;
         List<Contact> oldContacts = (List<Contact>)oldlist;
+
+        // Update a contact in this trigger
+        newContacts[0].AssistantPhone = '9134061193';
+        update newContacts[0];
+
         this.triggerAction = triggerAction;
         DmlWrapper dmlWrapper = new DmlWrapper();
         Map<Id,Integer> accountIdNumOfCons = new Map<Id, Integer>();
