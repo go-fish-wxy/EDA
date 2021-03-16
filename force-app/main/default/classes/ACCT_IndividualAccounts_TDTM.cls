@@ -91,9 +91,9 @@ public class ACCT_IndividualAccounts_TDTM extends TDTM_Runnable {
         List<Contact> newContacts = (List<Contact>)newlist;
         List<Contact> oldContacts = (List<Contact>)oldlist;
 
-        // Update a contact in this trigger
-        newContacts[0].AssistantPhone = '9134061193';
-        update newContacts[0];
+        // Update a contact in this trigger 
+        // newContacts[0].AssistantPhone = '9134061193';
+        // update newContacts[0];
 
         this.triggerAction = triggerAction;
         DmlWrapper dmlWrapper = new DmlWrapper();

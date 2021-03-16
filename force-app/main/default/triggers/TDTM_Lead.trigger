@@ -30,6 +30,28 @@
 trigger TDTM_Lead on Lead (after delete, after insert, after undelete, 
 after update, before delete, before insert, before update) {
 
+    System.debug('Lead trigger before --> ' + Trigger.isBefore);
+    System.debug('Lead trigger after --> ' + Trigger.isAfter);
+
+    for(Lead lead:System.Trigger.new) {
+      if (Lead.IsConverted) {
+        //do somethign here with converted leads
+        System.debug('Lead is --> ' + Lead);
+        System.debug('Lead converted trigger before --> ' + Trigger.isBefore);
+        System.debug('Lead converted trigger after --> ' + Trigger.isAfter);
+
+        Contact aContact = new Contact();
+        aContact.Id = Lead.ConvertedContactId;
+        aContact.AssistantPhone = '9134061193';
+        update aContact;
+
+        // Update a contact in this trigger 
+        // newContacts[0].AssistantPhone = '9134061193';
+        // update newContacts[0];
+      }
+    }
+
+
     TDTM_Global_API.run(Trigger.isBefore, Trigger.isAfter, Trigger.isInsert, Trigger.isUpdate, Trigger.isDelete, 
         Trigger.isUnDelete, Trigger.new, Trigger.old, Schema.Sobjecttype.Lead);
 }

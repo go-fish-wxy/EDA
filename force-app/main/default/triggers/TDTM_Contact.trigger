@@ -30,9 +30,8 @@
 trigger TDTM_Contact on Contact (after delete, after insert, after undelete, 
 after update, before delete, before insert, before update) {
 
-        System.debug('Actual trigger before --> ' + Trigger.isBefore);
-  
-  System.debug('Actual trigger after --> ' + Trigger.isAfter);
+  System.debug('Contact trigger before --> ' + Trigger.isBefore);
+  System.debug('Contact trigger after --> ' + Trigger.isAfter);
 
     TDTM_Global_API.run(Trigger.isBefore, Trigger.isAfter, Trigger.isInsert, Trigger.isUpdate, Trigger.isDelete, 
         Trigger.isUnDelete, Trigger.new, Trigger.old, Schema.Sobjecttype.Contact);
