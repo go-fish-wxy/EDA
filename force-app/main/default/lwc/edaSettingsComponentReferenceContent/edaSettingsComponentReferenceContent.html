@@ -7,7 +7,37 @@
             ></c-eda-settings-component-reference-heading>
         </div>
         <div class="slds-col slds-m-top_medium">
-            <slot></slot>
+            <div class="slds-tabs_default slds-tabs_card">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <li class="slds-tabs_default__item slds-is-active" title="Example" role="presentation">
+                        <a
+                            class="slds-tabs_default__link"
+                            href="#"
+                            role="tab"
+                            tabindex="0"
+                            aria-selected="true"
+                            aria-controls="tab-default-1"
+                            id="tab-default-example__item"
+                        >
+                            Example
+                        </a>
+                    </li>
+                    <li class="slds-tabs_default__item" title="Documentation" role="presentation">
+                        <a
+                            class="slds-tabs_default__link"
+                            href="#"
+                            role="tab"
+                            tabindex="-1"
+                            aria-selected="false"
+                            aria-controls="tab-default-2"
+                            id="tab-default-documentation__item"
+                        >
+                            Documentation
+                        </a>
+                    </li>
+                </ul>
+                <slot></slot>
+            </div>
         </div>
     </div>
 </template>
