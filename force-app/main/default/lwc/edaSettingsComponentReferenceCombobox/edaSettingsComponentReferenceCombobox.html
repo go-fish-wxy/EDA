@@ -1,5 +1,16 @@
 <template>
     <c-eda-settings-component-reference-content headingtitle="Combobox" headingdescription="Combobox is awesome">
-        <template if:true={combobox}> combobox </template>
+        <template if:true={combobox}>
+            <div class="slds-grid slds-grid_vertical slds-p-around_medium">
+                <c-settings-row-input
+                    class="slds-col"
+                    title="settingTitle"
+                    description="settingDescription"
+                    type="combobox"
+                    input-id={inputId}
+                    value="value"
+                ></c-settings-row-input>
+            </div>
+        </template>
     </c-eda-settings-component-reference-content>
 </template>
