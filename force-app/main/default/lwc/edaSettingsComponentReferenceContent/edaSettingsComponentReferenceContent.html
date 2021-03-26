@@ -1,13 +1,12 @@
 <template>
-    <div class="slds-grid slds-grid_vertical">
-        <div class="slds-col slds-p-around_medium">
+    <div class="slds-grid slds-grid_vertical slds-m-around_medium">
+        <div class="slds-col">
             <c-eda-settings-component-reference-heading
-                title={title}
-                headingdescription="hello"
+                headingtitle={headingtitle}
+                headingdescription={headingdescription}
             ></c-eda-settings-component-reference-heading>
         </div>
-        <div class="slds-col">
-            main content
+        <div class="slds-col slds-m-top_medium">
             <slot></slot>
         </div>
     </div>
