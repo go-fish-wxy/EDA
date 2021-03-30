@@ -3,12 +3,13 @@
         <template if:true={combobox}>
             <div class="slds-grid slds-grid_vertical slds-p-around_medium">
                 <c-settings-row-input
-                    class="slds-col"
-                    title="settingTitle"
-                    description="settingDescription"
+                    class="slds-size_3-of-3"
+                    title="Sample Combobox Setting"
+                    description="Sample Comboxbox Setting description"
                     type="combobox"
                     input-id={inputId}
                     value="value"
+                    options={options}
                 ></c-settings-row-input>
             </div>
         </template>
