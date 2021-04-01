@@ -147,14 +147,6 @@ tasks:
             path: unpackaged/test_unpackaged
             unmanaged: True
 
-    deploy_unpackaged_healthcheck_tab_translation:
-        description: Deploys metadata and configuration for unpackaged unit tests against unpackaged EDA
-        class_path: cumulusci.tasks.salesforce.Deploy
-        options:
-            namespace_inject: $project_config.project__package__namespace
-            path: unpackaged/localization/health_check_tab
-            unmanaged: True
-
     deploy_trial_config:
         description: Deploys metadata and configuration for TSOs.
         class_path: cumulusci.tasks.salesforce.Deploy
@@ -302,13 +294,6 @@ tasks:
         options:
             path: unpackaged/config/trial
             namespace_tokenize: $project_config.project__package__namespace
-
-    deploy_Summer_21QA:
-        group: "EDA Metadata"
-        description: Deploys QA and Dev Only Config for Summer ‘21
-        class_path: cumulusci.tasks.salesforce.DeployBundles
-        options:
-            path: unpackaged/232
 
     robot:
         # description: Runs a Robot Framework test from a .robot file.
@@ -523,17 +508,6 @@ flows:
                 options:
                     namespaced: False
 
-    deploy_health_check_localization:
-        description: Deploys health check
-        steps:
-            1:
-                task: deploy_unpackaged_healthcheck_tab_translation
-                ui_options:
-                    name: "Health Check"
-                checks:
-                    - when: "not tasks.check_translation_workbench_enabled()"
-                      action: hide
-
     run_unmanaged_unit_tests:
         # description: Configure an org for use as a dev org after package metadata is deployed.
         steps:
@@ -691,12 +665,8 @@ plans:
                         name: EDA - Facility Display Name Formula Field
                     case_behavior_record_types:
                         name: EDA - Case Behavior Record Types
-                    health_check_tab:
-                        name: Health Check
                 options:
                     unmanaged: False
-            4:
-                flow: deploy_health_check_localization
 
     ra_einstein_template:
         slug: ra_template
