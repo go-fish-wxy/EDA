@@ -1,17 +1,18 @@
 <template>
-    <template for:each={viewModel.cards} for:item="card">
-        <div class="slds-visual-picker slds-visual-picker_large" key={card.componentName}>
-            <a
-                href="javascript:void(0);"
-                class="slds-box slds-box_link slds-box_x-small slds-media"
-                data-component-name={card.componentName}
-                onclick={handleNavigationClick}
-            >
-                <div class="slds-media__body slds-border_left slds-p-around_small">
-                    <h2 class="slds-truncate slds-text-heading_small" title={card.label}>{card.label}</h2>
-                    <p class="slds-m-top_small">{card.body}</p>
-                </div>
-            </a>
-        </div>
-    </template>
+    <div class="slds-grid slds-gutters_direct">
+        <template for:each={viewModel.cards} for:item="card">
+            <div class="slds-col" key={card.componentName}>
+                <lightning-card title={card.label}>
+                    {card.body}
+                    <lightning-button
+                        label={card.label}
+                        title={card.label}
+                        data-component-name={card.componentName}
+                        onclick={handleNavigationClick}
+                    >
+                    </lightning-button>
+                </lightning-card>
+            </div>
+        </template>
+    </div>
 </template>

@@ -166,10 +166,6 @@
         <tab>standard-Contact</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
-    <tabVisibilities>
-        <tab>Settings_Health_Check</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
     <classAccesses>
         <apexClass>%%%NAMESPACE%%%CMP_SettingsDataProvider</apexClass>
         <enabled>True</enabled>
