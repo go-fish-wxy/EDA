@@ -2,16 +2,16 @@
     <div class="slds-grid">
         <!--boxes for product card, todo: component-->
         <div class="slds-grid slds-grid_vertical slds-size_4-of-12">
-            <template for:each={edcSettingsConfigs.data} for:item="edcSettingsConfig">
-                <div class="slds-col slds-p-left_large slds-p-top_large" key={edcSettingsConfig.Id}>
-                    <lightning-card title={edcSettingsConfig.MasterLabel}>
+            <template for:each={edcSettingsModels.data} for:item="edcSettingsModel">
+                <div class="slds-col slds-p-left_large slds-p-top_large" key={edcSettingsModel.Id}>
+                    <lightning-card title={edcSettingsModel.masterLabel}>
                         <div class="slds-grid slds-grid_vertical slds-wrap">
-                            <div class="slds-col">{edcSettingsConfig.Description__c}</div>
+                            <div class="slds-col">{edcSettingsModel.description}</div>
                             <div class="slds-col slds-align_absolute-center">
                                 <lightning-button
                                     label="Manage Settings"
                                     title="Manage Settings"
-                                    data-component-name={edcSettingsConfig.componentName}
+                                    data-component-name={edcSettingsModel.componentName}
                                     onclick={handleNavigationClick}
                                 ></lightning-button>
                             </div>
