@@ -1,18 +1,29 @@
 <template>
-    <div class="slds-grid slds-gutters_direct">
-        <template for:each={viewModel.cards} for:item="card">
-            <div class="slds-col" key={card.componentName}>
-                <lightning-card title={card.label}>
-                    {card.body}
-                    <lightning-button
-                        label={card.label}
-                        title={card.label}
-                        data-component-name={card.componentName}
-                        onclick={handleNavigationClick}
-                    >
-                    </lightning-button>
-                </lightning-card>
-            </div>
-        </template>
+    <div class="slds-grid">
+        <!--boxes for product card, todo: component-->
+        <div class="slds-grid slds-grid_vertical slds-size_4-of-12">
+            <template for:each={edcSettingsConfigs.data} for:item="edcSettingsConfig">
+                <div class="slds-col slds-p-left_large slds-p-top_large" key={edcSettingsConfig.Id}>
+                    <lightning-card title={edcSettingsConfig.MasterLabel}>
+                        <div class="slds-grid slds-grid_vertical slds-wrap">
+                            <div class="slds-col">{edcSettingsConfig.Description__c}</div>
+                            <div class="slds-col slds-align_absolute-center">
+                                <lightning-button
+                                    label="Manage Settings"
+                                    title="Manage Settings"
+                                    data-component-name={edcSettingsConfig.componentName}
+                                    onclick={handleNavigationClick}
+                                ></lightning-button>
+                            </div>
+                        </div>
+                    </lightning-card>
+                </div>
+            </template>
+        </div>
+
+        <!-- giant box for landing, todo: component-->
+        <div class="slds-grid slds-grid_vertical slds-size_8-of-12 slds-m-left_large slds-theme_default">
+            <div class="slds-box_large">box</div>
+        </div>
     </div>
 </template>

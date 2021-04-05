@@ -25,18 +25,17 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 /**
-* @author Salesforce.org
-* @date 2021
-* @group Setting
-* @group-content ../../ApexDocContent/Setting.htm
-* @description Controller for EDA Settings LWC component.
-*/
+ * @author Salesforce.org
+ * @date 2021
+ * @group Setting
+ * @group-content ../../ApexDocContent/Setting.htm
+ * @description Controller for EDA Settings LWC component.
+ */
 public virtual with sharing class EDASettingsController {
-
     /******************************************************************************
-    * @description Check if current user has access.
-    * @return If current user has access.
-    ******************************************************************************/
+     * @description Check if current user has access.
+     * @return If current user has access.
+     ******************************************************************************/
     @AuraEnabled(cacheable=true)
     public static Boolean checkAccessForCurrentUser() {
         try {
@@ -47,9 +46,9 @@ public virtual with sharing class EDASettingsController {
     }
 
     /******************************************************************************
-    * @description Retrieves an instance of the UserPermissionService class.
-    * @return An instance of UserPermissionService.
-    ******************************************************************************/
+     * @description Retrieves an instance of the UserPermissionService class.
+     * @return An instance of UserPermissionService.
+     ******************************************************************************/
     @TestVisible
     private static UserPermissionService locateUserPermissionService() {
         return UserPermissionService.getInstance();

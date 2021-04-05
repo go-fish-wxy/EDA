@@ -1,21 +1,8 @@
-import { LightningElement } from "lwc";
+import { LightningElement, wire, track } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
-
+import getEDCSettingsConfigs from "@salesforce/apex/EDCSettingsController.getEDCSettingsConfigs";
 export default class EdcSettings extends NavigationMixin(LightningElement) {
-    viewModel = {
-        cards: [
-            {
-                label: "EDA",
-                body: "EDA is a product and this is some really long text",
-                componentName: "c__edaSettingsContainer",
-            },
-            {
-                label: "Health Check",
-                body: "Health check is nifty!",
-                componentName: "c__healthCheckContainer",
-            },
-        ],
-    };
+    @wire(getEDCSettingsConfigs) edcSettingsConfigs;
 
     handleNavigationClick(event) {
         event.preventDefault();
