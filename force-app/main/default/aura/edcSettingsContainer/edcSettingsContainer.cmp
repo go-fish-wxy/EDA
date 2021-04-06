@@ -1,4 +1,4 @@
 <aura:component implements="force:appHostable" access="global" controller="EDCSettingsController">
-    <aura:attribute name="edcSettingsModels" type="edcSettingsModel[]" />
-    <c:edcSettings onhandleDynamicLabel="{!c.handleDynamicLabel}" />
+    <aura:attribute name="labelValueByName" type="Map" />
+    <c:edcSettings onhandleDynamicLabel="{!c.getLabelValueByName}" labelValueByName="{!v.labelValueByName}" />
 </aura:component>

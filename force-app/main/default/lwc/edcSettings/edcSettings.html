@@ -2,7 +2,7 @@
     <div class="slds-grid">
         <!--boxes for product card, todo: component-->
         <div class="slds-grid slds-grid_vertical slds-size_4-of-12">
-            <template for:each={edcSettingsModels.data} for:item="edcSettingsModel">
+            <template for:each={edcSettingsModels} for:item="edcSettingsModel">
                 <div class="slds-col slds-p-left_large slds-p-top_large" key={edcSettingsModel.Id}>
                     <lightning-card title={edcSettingsModel.masterLabel}>
                         <div class="slds-grid slds-grid_vertical slds-wrap">

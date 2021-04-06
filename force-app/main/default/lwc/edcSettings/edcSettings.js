@@ -2,16 +2,20 @@ import { LightningElement, api, wire, track } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
 import getEDCSettingsModels from "@salesforce/apex/EDCSettingsController.getEDCSettingsModels";
 export default class EdcSettings extends NavigationMixin(LightningElement) {
-    @wire(getEDCSettingsModels) edcSettingsModels;
+    @api labelValueByName;
 
-    connectedCallback() {
-        console.log(edcSettingsModels);
+    @track edcSettingsModels;
+    @track edcSettingsWireResult;
 
-        const handleDynamicLabelEvent = new CustomEvent("handleDynamicLabel", {
-            detail: { edcSettingsModels },
-        });
-
-        this.dispatchEvent(handleDynamicLabelEvent);
+    @wire(getEDCSettingsModels)
+    edcSettingsVModelWire(result) {
+        this.edcSettingsWireResult = result;
+        if (result.data) {
+            this.edcSettingsModels = result.data;
+            this.handleLabels(result.data);
+        } else if (result.error) {
+            //console.log("error retrieving edcSettingsVModel");
+        }
     }
 
     handleNavigationClick(event) {
@@ -25,5 +29,12 @@ export default class EdcSettings extends NavigationMixin(LightningElement) {
             state: {},
         };
         this[NavigationMixin.Navigate](pageReference);
+    }
+
+    handleLabels(edcSettingsModels) {
+        const handleDynamicLabelEvent = new CustomEvent("handleDynamicLabel", {
+            detail: { edcSettingsModels },
+        });
+        this.dispatchEvent(handleDynamicLabelEvent);
     }
 }
