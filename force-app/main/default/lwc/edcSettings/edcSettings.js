@@ -2,7 +2,7 @@ import { LightningElement, api, wire, track } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
 import getEDCSettingsModels from "@salesforce/apex/EDCSettingsController.getEDCSettingsModels";
 export default class EdcSettings extends NavigationMixin(LightningElement) {
-    @api labelValueByName;
+    @api newEDCSettingsModels;
 
     @track edcSettingsModels;
     @track edcSettingsWireResult;
@@ -32,6 +32,10 @@ export default class EdcSettings extends NavigationMixin(LightningElement) {
     }
 
     handleLabels(edcSettingsModels) {
+        this.dispatchLabelEvent(edcSettingsModels);
+    }
+
+    dispatchLabelEvent(edcSettingsModels) {
         const handleDynamicLabelEvent = new CustomEvent("handleDynamicLabel", {
             detail: { edcSettingsModels },
         });
