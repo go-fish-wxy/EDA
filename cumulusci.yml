@@ -147,6 +147,12 @@ tasks:
             path: unpackaged/test_unpackaged
             unmanaged: True
 
+    deploy_unpackaged_healthcheck_tab_translation:
+        description: Deploys metadata and configuration for unpackaged unit tests against unpackaged EDA
+        class_path: cumulusci.tasks.salesforce.Deploy
+        options:
+            path: unpackaged/localization/health_check_tab
+
     deploy_trial_config:
         description: Deploys metadata and configuration for TSOs.
         class_path: cumulusci.tasks.salesforce.Deploy
