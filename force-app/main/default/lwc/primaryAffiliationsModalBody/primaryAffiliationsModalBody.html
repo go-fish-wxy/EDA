@@ -1,9 +1,13 @@
 <template>
-    <div class="slds-grid slds-grid--vertical slds-grid_vertical-align-start slds-wrap">
+    <div
+        class="slds-grid slds-grid--vertical slds-grid_vertical-align-start slds-wrap slds-p-left_large slds-p-right_large slds-p-bottom_xx-large"
+    >
         <template if:true={modifyRecords}>
-            <div class="slds-col slds-size-1-of-1">{labelReference.modalBodyEditSave}</div>
+            <div class="slds-col slds-size-1-of-1 slds-p-bottom_large">
+                <lightning-formatted-rich-text value={affiliationsDesc}> </lightning-formatted-rich-text>
+            </div>
             <template if:true={accountRecordTypeComboboxVModel}>
-                <div class="slds-col slds-size-1-of-1">
+                <div class="slds-col slds-size_2-of-3">
                     <lightning-combobox
                         id={inputAttributeReference.accountRecordType}
                         name={inputAttributeReference.accountRecordType}
@@ -15,10 +19,12 @@
                         data-qa-locator={inputAttributeReference.accountRecordType}
                     ></lightning-combobox>
                 </div>
-                <div class="slds-col slds-size-1-of-1">{accountRecordTypeApiNameLabel}</div>
+                <div class="slds-p-bottom_xx-large">
+                    <div class="slds-col slds-size-1-of-1 slds-p-bottom_xx-large">{accountRecordTypeApiNameLabel}</div>
+                </div>
             </template>
             <template if:true={contactAccountLookupFieldComboboxVModel}>
-                <div class="slds-col slds-size-1-of-1">
+                <div class="slds-col slds-size_2-of-3">
                     <lightning-combobox
                         id={inputAttributeReference.contactField}
                         name={inputAttributeReference.contactField}
@@ -30,7 +36,9 @@
                         data-qa-locator={inputAttributeReference.contactField}
                     ></lightning-combobox>
                 </div>
-                <div class="slds-col slds-size-1-of-1">{contactFieldApiNameLabel}</div>
+                <div class="slds-p-bottom_xx-large">
+                    <div class="slds-col slds-size-1-of-1 slds-p-bottom_xx-large">{contactFieldApiNameLabel}</div>
+                </div>
             </template>
         </template>
     </div>

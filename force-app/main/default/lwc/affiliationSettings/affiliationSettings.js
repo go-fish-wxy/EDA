@@ -1,8 +1,11 @@
 import { LightningElement, api, wire, track } from "lwc";
 import { refreshApex } from "@salesforce/apex";
 
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
+
 import getAffiliationsSettingsVModel from "@salesforce/apex/AffiliationsSettingsController.getAffiliationsSettingsVModel";
 import getPrimaryAffiliationsSettingsVModel from "@salesforce/apex/AffiliationsSettingsController.getPrimaryAffiliationsSettingsVModel";
+import updateAffiliationMappings from "@salesforce/apex/AffiliationsSettingsController.updateAffiliationMappings";
 
 import stgAffiliationsSettingsTitle from "@salesforce/label/c.stgAffiliationsSettingsTitle";
 import afflTypeEnforced from "@salesforce/label/c.afflTypeEnforced";
@@ -12,6 +15,8 @@ import stgBtnEdit from "@salesforce/label/c.stgBtnEdit";
 import stgColAccountRecordType from "@salesforce/label/c.stgColAccountRecordType";
 import stgColContactPrimaryAfflField from "@salesforce/label/c.stgColContactPrimaryAfflField";
 import stgTabAfflMappings from "@salesforce/label/c.stgTabAfflMappings";
+import stgAffiliationsEditSuccess from "@salesforce/label/c.stgAffiliationsEditSuccess";
+import stgTellMeMoreLink from "@salesforce/label/c.stgTellMeMoreLink";
 
 export default class affiliationSettings extends LightningElement {
     isEditMode = false;
@@ -34,7 +39,14 @@ export default class affiliationSettings extends LightningElement {
             primaryAffiliationsDescription: AfflMappingsDescription,
             primaryAffiliationsTitle: stgTabAfflMappings,
         },
+        successMessage: stgAffiliationsEditSuccess,
+        tellMeMoreLink: stgTellMeMoreLink,
     };
+
+    affiliationsHyperLink =
+        '<a href="https://powerofus.force.com/s/article/EDA-Configure-Affiliations-Settings">' +
+        this.labelReference.tellMeMoreLink +
+        "</a>";
 
     inputAttributeReference = {
         recordTypeValidation: "recordTypeValidation",
@@ -156,9 +168,19 @@ export default class affiliationSettings extends LightningElement {
     }
 
     updateAffiliation(mappingName, accountRecordType, contactField) {
-        console.log("Updating Affiliation!");
-        //TODO: await Apex action to save!
-        //TODO: Success toast if it works, throw the exception if it doesn't!
+        updateAffiliationMappings({
+            mappingName: mappingName,
+            accRecordType: accountRecordType,
+            conPrimaryAfflField: contactField,
+        })
+            .then((result) => {
+                this.showToast("success", "Save Complete", this.labelReference.successMessage.replace("{0}", result));
+            })
+
+            .catch((error) => {
+                // console.log('Inside error');
+            });
+        this.refreshAllApex();
     }
 
     refreshAllApex() {
@@ -170,5 +192,23 @@ export default class affiliationSettings extends LightningElement {
                 input.resetValue();
             });
         });
+    }
+
+    showToast(toastType, toastTitle, toastMessage) {
+        const showToastEvent = new ShowToastEvent({
+            title: toastTitle,
+            message: toastMessage,
+            variant: toastType,
+            mode: "dismissable",
+        });
+        this.dispatchEvent(showToastEvent);
+    }
+
+    get affiliationsDesc() {
+        return (
+            this.labelReference.primaryAffiliationMappingsTable.primaryAffiliationsDescription +
+            " " +
+            this.affiliationsHyperLink
+        );
     }
 }
