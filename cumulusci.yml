@@ -697,30 +697,7 @@ plans:
         tier: primary
         steps:
             1:
-<<<<<<< HEAD
-                flow: dependencies
-                ui_options:
-                    deploy_pre:
-                        acc_record_types:
-                            name: EDA - Account Record Types
-                        contact_key_affl_fields:
-                            name: EDA - Contact Key Affiliation Fields
-            2:
-                task: install_managed
-            3:
-                task: deploy_post
-                ui_options:
-                    course_connection_record_types:
-                        name: EDA - Course Connection Record Types
-                    facility_display_name:
-                        name: EDA - Facility Display Name Formula Field
-                    case_behavior_record_types:
-                        name: EDA - Case Behavior Record Types
-                options:
-                    unmanaged: False
-=======
                 flow: customer_org
->>>>>>> feature/232
 
     ra_einstein_template:
         slug: ra_template
