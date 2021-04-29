@@ -6,6 +6,7 @@ import stgAccModelTitle from "@salesforce/label/c.stgAccModelTitle";
 import stgAdminAccountRecordType from "@salesforce/label/c.stgAdminAccountRecordType";
 import stgAccountRecordTypeSupportsHHAddress from "@salesforce/label/c.stgAccountRecordTypeSupportsHHAddress";
 import stgAccoutTypesWithoutContactsDelete from "@salesforce/label/c.stgAccoutTypesWithoutContactsDelete";
+import stgLeadConversionAccountNaming from "@salesforce/label/c.stgLeadConversionAccountNaming";
 //Contact Information Settings Labels
 import stgContactInformationSettingsTitle from "@salesforce/label/c.stgContactInformationSettingsTitle";
 import stgDefaultContactLanguageFluency from "@salesforce/label/c.stgDefaultContactLanguageFluency";
@@ -21,12 +22,16 @@ import stgSimpleAddressChangeUpdate from "@salesforce/label/c.stgSimpleAddressCh
 import stgTabAfflMappings from "@salesforce/label/c.stgTabAfflMappings";
 import stgAffiliationsSettingsNav from "@salesforce/label/c.stgAffiliationsSettingsNav";
 import afflTypeEnforced from "@salesforce/label/c.afflTypeEnforced";
+//System Tools Labels
+import stgSystemToolsNav from "@salesforce/label/c.stgSystemToolsNav";
 //System Settings Labels
 import stgSystemSettingsNav from "@salesforce/label/c.stgSystemSettingsNav";
-//Errors Settings Labels
+
+//Error Settings Labels
 import stgErrorSettingsNav from "@salesforce/label/c.stgErrorSettingsNav";
-//System Tools SettingsLabels
-import stgSystemSettingsTitle from "@salesforce/label/c.stgSystemSettingsTitle";
+import stgStoreErrorsTitle from "@salesforce/label/c.stgStoreErrorsTitle";
+import stgEnableDebugTitle from "@salesforce/label/c.stgEnableDebugTitle";
+import stgDisableErrorHandlingTitle from "@salesforce/label/c.stgDisableErrorHandlingTitle";
 
 export default class EdaSettingsNavigation extends LightningElement {
     labelReference = {
@@ -43,6 +48,7 @@ export default class EdaSettingsNavigation extends LightningElement {
             adminAccountNaming: "Administrative Account Name Format",
             hhAccountNaming: "Household Account Name Format",
             autoHHAccountNaming: "Automatically Rename Household Accounts",
+            leadConversionAutoAccountNaming: stgLeadConversionAccountNaming,
         },
         addressSettings: {
             addressAccountRecordTypes: stgAccountTypesMultiAddressesEnabled,
@@ -66,11 +72,11 @@ export default class EdaSettingsNavigation extends LightningElement {
             coursesAndEnrollmentsSettings: "Courses and Enrollments",
         },
         errorSettings: {
-            enableDebug: "Enable Debug",
-            enableErrorHandling: "Enable Error Handling",
+            enableDebug: stgEnableDebugTitle,
+            enableErrorHandling: stgDisableErrorHandlingTitle,
             errorSettings: stgErrorSettingsNav,
             sendErrorNotifications: "Send Error Notifications",
-            storeErrors: "Store Errors",
+            storeErrors: stgStoreErrorsTitle,
         },
         programSettings: {
             programSettings: "Programs",
@@ -90,7 +96,7 @@ export default class EdaSettingsNavigation extends LightningElement {
             courseDescriptionMigration: "Course Description Migration",
             ethnicityAndRaceBackfill: "Ethnicity and Race Backfill",
             preferredEmailCleanup: "Preferred Email and Phone Cleanup",
-            systemTools: stgSystemSettingsTitle,
+            systemToolsNav: stgSystemToolsNav,
             refreshAdministrativeAccountNames: "Refresh Administrative Account Names",
             refreshHouseholdAccountNames: "Refresh Household Account Names",
         },
@@ -127,6 +133,10 @@ export default class EdaSettingsNavigation extends LightningElement {
                             { label: this.labelReference.accountModel.adminAccountNaming, id: "adminAccountNaming" },
                             { label: this.labelReference.accountModel.hhAccountNaming, id: "hhAccountNaming" },
                             { label: this.labelReference.accountModel.autoHHAccountNaming, id: "autoHHAccountNaming" },
+                            {
+                                label: this.labelReference.accountModel.leadConversionAutoAccountNaming,
+                                id: "leadConversionAutoAccountNaming",
+                            },
                         ],
                         isActive: true,
                     },
@@ -263,7 +273,7 @@ export default class EdaSettingsNavigation extends LightningElement {
                         ],
                     },
                     {
-                        label: this.labelReference.systemTools.systemTools,
+                        label: this.labelReference.systemTools.systemToolsNav,
                         page: "systemTools",
                         id: "systemTools",
                         menuItems: [

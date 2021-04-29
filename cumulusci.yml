@@ -116,6 +116,24 @@ tasks:
             path: unpackaged/config/translations/
             unmanaged: True
 
+    deploy_post:
+        ui_options:
+            course_connection_record_types:
+                name: EDA - Course Connection Record Types
+            facility_display_name:
+                name: EDA - Facility Display Name Formula Field
+            case_behavior_record_types:
+                name: EDA - Case Behavior Record Types
+            health_check_tab:
+                name: Health Check
+
+    deploy_pre:
+        ui_options:
+            acc_record_types:
+                name: EDA - Account Record Types
+            contact_key_affl_fields:
+                name: EDA - Contact Key Affiliation Fields
+
     deploy_preferred_email_config:
         description: Deploys Preferred Email configuration(custom email fields, translations, apex unit tests and sets Admin profile access to Email fields) for testing.
         class_path: cumulusci.tasks.salesforce.Deploy
@@ -302,6 +320,21 @@ tasks:
         options:
             path: unpackaged/config/trial
             namespace_tokenize: $project_config.project__package__namespace
+
+    deploy_Summer_21QA:
+        group: "EDA Metadata"
+        description: Deploys QA and Dev Only Config for Summer ‘21
+        class_path: cumulusci.tasks.salesforce.DeployBundles
+        options:
+            path: unpackaged/232
+
+    retrieve_custom_labels_and_translations:
+        description: "Retrieve custom labels and translations from the default scratch org"
+        class_path: cumulusci.tasks.sfdx.SFDXOrgTask
+        options:
+            command: "force:source:retrieve"
+            extra: "-m CustomLabels,Translations"
+        group: "EDA: Metadata"
 
     robot:
         # description: Runs a Robot Framework test from a .robot file.
@@ -621,13 +654,18 @@ flows:
             0.1:
                 flow: translations
 
-    retrieve_custom_labels_and_translations:
-        description: "Retrieve custom labels and translations from the default scratch org"
-        class_path: cumulusci.tasks.sfdx.SFDXOrgTask
-        options:
-            command: "force:source:retrieve"
-            extra: "-m CustomLabels,Translations"
-        group: "EDA: Metadata"
+    customer_org:
+        steps:
+            1:
+                flow: dependencies
+            2:
+                task: install_managed
+            3:
+                task: deploy_post
+                options:
+                    unmanaged: False
+            4:
+                flow: deploy_health_check_localization
 
 services:
     mockaroo:
@@ -659,6 +697,7 @@ plans:
         tier: primary
         steps:
             1:
+<<<<<<< HEAD
                 flow: dependencies
                 ui_options:
                     deploy_pre:
@@ -679,6 +718,9 @@ plans:
                         name: EDA - Case Behavior Record Types
                 options:
                     unmanaged: False
+=======
+                flow: customer_org
+>>>>>>> feature/232
 
     ra_einstein_template:
         slug: ra_template

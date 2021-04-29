@@ -21,7 +21,7 @@
         <name>AutoCreateFieldError</name>
     </customLabels>
     <customLabels>
-        <label>バッチの開始中に問題が発生しました。</label>
+        <label><!-- Message when an Apex job can't run --></label>
         <name>BatchJobRunningProblem</name>
     </customLabels>
     <customLabels>
@@ -385,6 +385,18 @@
         <name>stgAdminAccountRecordType</name>
     </customLabels>
     <customLabels>
+        <label><!-- Description of the Delete Affiliation mapping window --></label>
+        <name>stgAffiliationsDeleteModalBody</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Title for warning about deleting an Affiliation mapping --></label>
+        <name>stgAffiliationsDeleteModalTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Toast message when an Affiliation mapping is deleted --></label>
+        <name>stgAffiliationsDeleteSuccess</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Description of the Edit Affiliation Mapping window --></label>
         <name>stgAffiliationsEditModalBody</name>
     </customLabels>
@@ -423,6 +435,10 @@
     <customLabels>
         <label>削除されていない所属の状況</label>
         <name>stgAfflDeleteProgramEnrollment</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message before deleting Affiliation mapping with an auto-enrollment --></label>
+        <name>stgAfflDeleteWithAutoEnrollment</name>
     </customLabels>
     <customLabels>
         <label>この所属は、別の所属対応付けによりすでに参照されているレコードタイプを参照しているため、対応付けることができません。所属が翻訳されるようにこの対応付けを追加する必要がある場合は、[編集] をクリックして既存の対応付けを変更します。次に、[取引先責任者の主所属項目] の下で項目の API 参照名を指定します。[取引先レコードタイプ] で指定された名前を変更しないでください。</label>
@@ -501,6 +517,10 @@
         <name>stgBtnCancel</name>
     </customLabels>
     <customLabels>
+        <label><!-- Button label for delete Affiliation mapping warning --></label>
+        <name>stgBtnDelete</name>
+    </customLabels>
+    <customLabels>
         <label>編集</label>
         <name>stgBtnEdit</name>
     </customLabels>
@@ -509,8 +529,12 @@
         <name>stgBtnRefreshAdminNames</name>
     </customLabels>
     <customLabels>
-        <label>すべての世帯名を更新</label>
+        <label><!-- Button label for updating the selected Apex job --></label>
         <name>stgBtnRefreshHouseholdNames</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Alt text for button that updates all Household Account names --></label>
+        <name>stgBtnRefreshHouseholdNamesA11y</name>
     </customLabels>
     <customLabels>
         <label>バックフィルを実行</label>
@@ -523,6 +547,10 @@
     <customLabels>
         <label>保存</label>
         <name>stgBtnSave</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Button label for updating the selected Apex job --></label>
+        <name>stgBtnUpdate</name>
     </customLabels>
     <customLabels>
         <label>クリーンアップがキューに正常に登録されました。バッチの完了時にメールが送信されます。</label>
@@ -585,7 +613,7 @@
         <name>stgContactInformationSettingsTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Label for the Allow Multiple Contact Addresses setting --></label>
+        <label><!-- Label for Accounts and Contacts Settings --></label>
         <name>stgContactMultiAddressesEnabled</name>
     </customLabels>
     <customLabels>
@@ -617,7 +645,7 @@
         <name>stgDefaultStudentTypeTitle</name>
     </customLabels>
     <customLabels>
-        <label>エラー処理の無効化</label>
+        <label><!-- Field label for the Error Handling setting --></label>
         <name>stgDisableErrorHandlingTitle</name>
     </customLabels>
     <customLabels>
@@ -635,6 +663,14 @@
     <customLabels>
         <label>履修科目を有効化</label>
         <name>stgEnableCourseConnectionsTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Description of the Debug Logging setting --></label>
+        <name>stgEnableDebugHelp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label for the Debug Logging setting --></label>
+        <name>stgEnableDebugTitle</name>
     </customLabels>
     <customLabels>
         <label><!-- Field label for the Enhanced Preferred Phone Functionality setting --></label>
@@ -1185,7 +1221,7 @@
         <name>stgHelpEnsureExistContactPreferEmail</name>
     </customLabels>
     <customLabels>
-        <label>製品のエラー処理フレームワークを無効にする場合に選択します。</label>
+        <label><!-- Description of the Error Handling setting --></label>
         <name>stgHelpErrorDisable</name>
     </customLabels>
     <customLabels>
@@ -1237,7 +1273,7 @@
         <name>stgHelpSimpleAddrChangeIsUpdate</name>
     </customLabels>
     <customLabels>
-        <label>選択すると、エラーがカスタムエラーオブジェクトに保存されます。エラーオブジェクトのタブを作成すると、保存されたすべてのエラーのリストを表示できます。</label>
+        <label><!-- Description of the Store Errors setting --></label>
         <name>stgHelpStoreErrorsOn</name>
     </customLabels>
     <customLabels>
@@ -1289,12 +1325,24 @@
         <name>stgPreferredEmailBatchEmailSubject</name>
     </customLabels>
     <customLabels>
-        <label>メール/電話連絡先のデータクリーンアップ:</label>
+        <label><!-- Label for the Preferred Email and Preferred Phone setting --></label>
         <name>stgPreferredEmailDataCleanup</name>
     </customLabels>
     <customLabels>
         <label><!-- Field label for the Default Preferred Phone setting --></label>
         <name>stgPreferredPhoneDefault</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Description of the Update Preferred Email and Phone fields confirmation window --></label>
+        <name>stgPreferredPhoneEmailModalBody</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Title for the Update Preferred Email and Phone fields confirmation window --></label>
+        <name>stgPreferredPhoneEmailModalTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Toast message when Preferred Email and Phone fields are queued for update --></label>
+        <name>stgPreferredPhoneEmailSuccessToast</name>
     </customLabels>
     <customLabels>
         <label>標準の [電話] 項目に値がない場合や、複数の [電話] 項目が定義された場合に値をどの電話連絡先の項目からコピーするかを選択します。</label>
@@ -1317,27 +1365,43 @@
         <name>stgRefreshAdminAcctNameDesc</name>
     </customLabels>
     <customLabels>
+        <label><!--Toast message when Account names are queued for update --></label>
+        <name>stgRefreshAdminNamesSuccessToast</name>
+    </customLabels>
+    <customLabels>
         <label>すべての管理取引先名を更新</label>
         <name>stgRefreshAdminAcctNameTitle</name>
     </customLabels>
     <customLabels>
-        <label>警告: このボタンをクリックすると、すべての既存の世帯取引先レコードの名前が、[世帯取引先名形式] で指定された形式に変更されます。[世帯取引先の名前を自動的に変更] 設定は以前に選択されていなくても、このアクションにより有効になります。製品ドキュメントを読んで、元に戻すことができないこの変更の影響を確実に理解してください。続行する前に、世帯取引先を参照するすべての自動化またはプロセス (ワークフロールールなど) を無効にしてください。更新が完了したら、それらを再度有効にすることができます。</label>
+        <label><!-- Description of the Update All Household Account Names setting --></label>
         <name>stgRefreshHHAcctNameDesc</name>
     </customLabels>
     <customLabels>
-        <label>すべての世帯取引先名を更新</label>
+        <label><!-- Label for the Update All Household Account Names settings --></label>
         <name>stgRefreshHHAcctNameTitle</name>
     </customLabels>
     <customLabels>
-        <label>クリーンアップを実行</label>
+        <label><!-- Description of the Update all Household Account names confirmation window --></label>
+        <name>stgRefreshHouseholdNamesModalBody</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Title for the Update all Household Account names confirmation window  --></label>
+        <name>stgRefreshHouseholdNamesModalTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Toast message when Household Account names are queued for update --></label>
+        <name>stgRefreshHouseholdNamesSuccessToast</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Button label for updating the selected Apex job --></label>
         <name>stgRunCleanUp</name>
     </customLabels>
     <customLabels>
-        <label>このデータクリーンアッププロセスは、メール連絡先または電話連絡先の要件が初めて有効化された後、または要件を適用しない期間が経過した後に実行されます。</label>
+        <label><!-- Description of the Preferred Email and Preferred Phone setting --></label>
         <name>stgRunCleanUpEnableFirstTime</name>
     </customLabels>
     <customLabels>
-        <label>設定が正常に保存されました。</label>
+        <label><!-- Confirmation messsage that updated settings were saved --></label>
         <name>stgSaveSettings</name>
     </customLabels>
     <customLabels>
@@ -1353,7 +1417,7 @@
         <name>stgSimpleAddressChangeUpdate</name>
     </customLabels>
     <customLabels>
-        <label>エラーの保存</label>
+        <label><!-- Label for the Store Errors setting --></label>
         <name>stgStoreErrorsTitle</name>
     </customLabels>
     <customLabels>
@@ -1371,12 +1435,12 @@
         <name>stgSuccessHHAccountNameRefresh</name>
     </customLabels>
     <customLabels>
-        <label><!-- Navigation section title for System Tools --></label>
-        <name>stgSystemSettingsNav</name>
+        <label><!-- Navigation title for System Tools --></label>
+        <name>stgSystemToolsNav</name>
     </customLabels>
     <customLabels>
-        <label><!-- Section title for System Tools Settings --></label>
-        <name>stgSystemSettingsTitle</name>
+        <label><!-- Navigation section title for System Tools --></label>
+        <name>stgSystemSettingsNav</name>
     </customLabels>
     <customLabels>
         <label>取引先および取引先責任者</label>
@@ -1435,7 +1499,7 @@
         <name>stgTabSystem</name>
     </customLabels>
     <customLabels>
-        <label><!-- Link label to EDA Documentation --></label>
+        <label><!-- Hyperlinked text to EDA Documentation --></label>
         <name>stgTellMeMoreLink</name>
     </customLabels>
     <customLabels>
