@@ -2,12 +2,9 @@
     getLabelValueByName: function (component, edcSettingsModels) {
         let newEDCSettingsModels = [];
 
-        //$Label.c.stgEDASettingsDescription
-        //$Label.c.stgSALSettingsDescription
-
         for (let i in edcSettingsModels) {
             let labelName = edcSettingsModels[i].description;
-            let labelReference = $A.getReference("$Label.c." + labelName);
+            let labelReference = $A.get("$Label." + labelName);
             component.set("v.tempLabelAttr", labelReference);
             let dynamicLabel = component.get("v.tempLabelAttr");
             let newEDCSettingsModel = {

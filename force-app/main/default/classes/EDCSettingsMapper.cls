@@ -25,7 +25,17 @@ public virtual with sharing class EDCSettingsMapper {
 
     public List<EDCSettingsModel> getEDCSettingsModels() {
         List<EDCSettingsModel> edcSettingsModels = new List<EDCSettingsModel>();
-        for (EDU_Settings_Config__mdt eduSettingsConfig : this.getEDUSettingsConfigs()) {
+
+        edcSettingsModels.add(
+            new EDCSettingsModel(
+                '1',
+                'hed.stgHHAccountCustomName',
+                'hed.stgHHAccountCustomName',
+                'edaSettingsContainer__hed'
+            )
+        );
+        edcSettingsModels.add(new EDCSettingsModel('1', 'c.TestLabel', 'c.TestLabel2', 'edaSettingsContainer__hed'));
+        /*for (EDU_Settings_Config__mdt eduSettingsConfig : this.getEDUSettingsConfigs()) {
             EDCSettingsModel edcSettingsModel = new EDCSettingsModel(
                 eduSettingsConfig.Id,
                 eduSettingsConfig.MasterLabel,
@@ -33,16 +43,16 @@ public virtual with sharing class EDCSettingsMapper {
                 eduSettingsConfig.Component_Name__c
             );
             edcSettingsModels.add(edcSettingsModel);
-        }
+        }*/
 
         return edcSettingsModels;
     }
 
-    private List<EDU_Settings_Config__mdt> getEDUSettingsConfigs() {
+    /*private List<EDU_Settings_Config__mdt> getEDUSettingsConfigs() {
         List<EDU_Settings_Config__mdt> eduSettingsConfigs = [
             SELECT Id, MasterLabel, Description__c, Component_Name__c
             FROM EDU_Settings_Config__mdt
         ];
         return eduSettingsConfigs;
-    }
+    }*/
 }
